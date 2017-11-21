@@ -1,8 +1,9 @@
 ﻿@using Apriorit_Test_MVC_IerarchySystemApp.Models
 @model IEnumerable<MenuItem>
+<div class="jumbotron">
 
-@helper BuildMenu(IEnumerable<MenuItem> data, int? parentId = null)
-{
+    @helper BuildMenu(IEnumerable<MenuItem> data, int? parentId = null)
+    {
 var items = data.Where(d => d.ParentId == parentId).OrderBy(i => i.Order);
 if (items.Any())
 {
@@ -18,6 +19,8 @@ if (items.Any())
 }
 }
 
-<div id="cssmenu">
-    @BuildMenu(Model)
+    <div id="cssmenu">
+        @BuildMenu(Model)
+    </div>
+
 </div>
