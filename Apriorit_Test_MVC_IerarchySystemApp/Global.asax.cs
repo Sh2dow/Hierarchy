@@ -13,6 +13,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BundleTable.EnableOptimizations = true;
 
             Database.SetInitializer(new AppDbInitializer()); 
         }

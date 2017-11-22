@@ -174,18 +174,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\CustomPageRoute.cs" />
+    <Compile Include="App_Start\FolderItemRoute.cs" />
+    <Compile Include="App_Start\UrlRouteHandler.cs" />
     <Compile Include="DataUtility\AppDbInitializer.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\RootController.cs" />
     <Compile Include="DataUtility\ApplicationContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\FolderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

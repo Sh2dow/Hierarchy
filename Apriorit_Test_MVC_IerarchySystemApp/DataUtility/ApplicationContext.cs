@@ -10,7 +10,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp.DataUtility
 
         }
 
-        public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<FolderItem> MenuItems { get; set; }
     }
 
 }

@@ -11,7 +11,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
 
             routes.Add(
             name: "CustomPage",
-            item: new CustomPageRoute());
+            item: new FolderItemRoute());
 
             routes.MapRoute(
                 name: "Default",

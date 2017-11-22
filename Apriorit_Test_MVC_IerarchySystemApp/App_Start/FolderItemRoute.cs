@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 namespace Apriorit_Test_MVC_IerarchySystemApp
 {
-    public class CustomPageRoute : RouteBase
+    public class FolderItemRoute : RouteBase
     {
         private object synclock = new object();
         ApplicationContext db = new ApplicationContext();
@@ -19,7 +19,8 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
             RouteData result = null;
 
             // Trim the leading slash
-            var path = httpContext.Request.Path.Substring(1);
+            //var path = httpContext.Request.Path.Substring(1);
+            var path = httpContext.Request.Path.Split('/').Last();
 
             // Get the page that matches.
             var page = GetPageList(httpContext)
@@ -31,7 +32,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
                 result = new RouteData(this, new MvcRouteHandler());
 
                 // Optional - make query string values into route values.
-                this.AddQueryStringParametersToRouteData(result, httpContext);
+                AddQueryStringParametersToRouteData(result, httpContext);
 
                 // TODO: You might want to use the page object (from the database) to
                 // get both the controller and action, and possibly even an area.
@@ -54,7 +55,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
         {
             VirtualPathData result = null;
 
-            MenuItem page = null;
+            FolderItem page = null;
 
             // Get all of the pages from the cache.
             var pages = GetPageList(requestContext.HttpContext);
@@ -72,12 +73,12 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
             return result;
         }
 
-        private bool TryFindMatch(IEnumerable<MenuItem> pages, RouteValueDictionary values, out MenuItem page)
+        private bool TryFindMatch(IEnumerable<FolderItem> pages, RouteValueDictionary values, out FolderItem page)
         {
             page = null;
             int id;
 
-            // This example uses a GUID for an id. If it cannot be parsed,
+            // This example uses a int for an id. If it cannot be parsed,
             // we just skip it.
             if (!int.TryParse(Convert.ToString(values["id"]), out id))
             {
@@ -91,7 +92,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
             // GetRouteData(). So, we match the same controller, action, and id.
             // If we had additional route values there, we would take them all 
             // into consideration during this step.
-            if (action == "Details" && controller == "CustomPage")
+            if (action == "Details" && controller == "Root")
             {
                 page = pages
                     .Where(x => x.Id.Equals(id))
@@ -116,7 +117,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
             }
         }
 
-        private IEnumerable<MenuItem> GetPageList(HttpContextBase httpContext)
+        private IEnumerable<FolderItem> GetPageList(HttpContextBase httpContext)
         {
             string key = "__CustomPageList";
             var pages = httpContext.Cache[key];
@@ -127,7 +128,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
                     pages = httpContext.Cache[key];
                     if (pages == null)
                     {
-                        // TODO: Retrieve the list of PageInfo objects from the database here.
+                        // TODO: Retrieve the list of FolderItem objects from the database here.
                         pages = db.MenuItems;
 
                         httpContext.Cache.Insert(
@@ -142,7 +143,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
                 }
             }
 
-            return (IEnumerable<MenuItem>)pages;
+            return (IEnumerable<FolderItem>)pages;
         }
     }
 }

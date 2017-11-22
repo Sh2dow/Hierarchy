@@ -8,7 +8,6 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }

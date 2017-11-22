@@ -1,23 +1,16 @@
 ﻿@using Apriorit_Test_MVC_IerarchySystemApp.Models
-@model IEnumerable<MenuItem>
+@model IEnumerable<FolderItem>
+
+<h2>Folder: @ViewBag.Folder</h2>
 
 <div class="jumbotron">
-
-    @helper BuildMenu(IEnumerable<MenuItem> data, int? parentId = null)
-    {
     <ul>
-        @foreach (var item in data)
+        @foreach (var item in Model)
         {
             <li>
-                <a href="@item.VirtualPath">@item.VirtualPath</a>
+                <a href="@Request.Url.AbsoluteUri/@item.VirtualPath">@item.VirtualPath</a>
             </li>
         }
     </ul>
-}
-
-    <h2>Folder: @ViewBag.Name</h2>
-    <div id="cssmenu">
-        @BuildMenu(Model)
-    </div>
 
 </div>

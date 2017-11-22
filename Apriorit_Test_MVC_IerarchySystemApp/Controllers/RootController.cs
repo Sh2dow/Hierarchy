@@ -2,6 +2,7 @@
 using Apriorit_Test_MVC_IerarchySystemApp.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Apriorit_Test_MVC_IerarchySystemApp.Controllers
@@ -17,7 +18,7 @@ namespace Apriorit_Test_MVC_IerarchySystemApp.Controllers
             {
                 Id = 1;
             }
-            List<MenuItem> menuItems = db.MenuItems.
+            List<FolderItem> menuItems = db.MenuItems.
                 Where(x => x.Order == Id).
                 ToList();
 
@@ -32,13 +33,30 @@ namespace Apriorit_Test_MVC_IerarchySystemApp.Controllers
                 Id = 0;
             }
 
-            List<MenuItem> menuItems = db.MenuItems.
+            List<FolderItem> menuItems = db.MenuItems.
                 Where(x => x.ParentId == Id).
                 ToList();
 
-            ViewBag.Name = db.MenuItems.FirstOrDefault(x => x.Id == Id).VirtualPath;
+            ViewBag.Folder = db.MenuItems.FirstOrDefault(x => x.Id == Id).VirtualPath;
 
             return PartialView(menuItems);
+        }
+
+
+
+        public ActionResult myAction(string url)
+        {
+            string[] hierarchy = url.Split('/');
+
+            string firstPart = hierarchy.Count() > 0 ? hierarchy[0] : string.Empty;
+            StringBuilder urlBuilder = new StringBuilder(firstPart);
+            for (int index = 1; index < hierarchy.Count(); index++)
+            {
+                urlBuilder.Append("/");
+                urlBuilder.Append(hierarchy[index]);
+            }
+
+            return PartialView(urlBuilder.ToString());
         }
 
     }

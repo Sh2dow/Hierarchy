@@ -9,15 +9,15 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
     {
         protected override void Seed(ApplicationContext db)
         {
-            var menuItems = new List<MenuItem> {
-                new MenuItem{Id=1, VirtualPath = "Creating Digital Images", Order = 1},
-                new MenuItem{Id=2, VirtualPath = "Resources", Order = 2, ParentId = 1},
-                new MenuItem{Id=3, VirtualPath = "Evidence", Order = 2, ParentId = 1},
-                new MenuItem{Id=4, VirtualPath = "Graphice Products", Order = 2, ParentId = 1},
-                new MenuItem{Id=5, VirtualPath = "Primary Resources", Order = 3, ParentId = 2},
-                new MenuItem{Id=5, VirtualPath = "Secondary Resources", Order = 3, ParentId = 2},
-                new MenuItem{Id=8, VirtualPath = "Process", Order = 3, ParentId = 4},
-                new MenuItem{Id=9, VirtualPath = "Final Poducts", Order = 3, ParentId = 4}
+            var menuItems = new List<FolderItem> {
+                new FolderItem{Id=1, VirtualPath = "Creating Digital Images", Order = 1},
+                new FolderItem{Id=2, VirtualPath = "Resources", Order = 2, ParentId = 1},
+                new FolderItem{Id=3, VirtualPath = "Evidence", Order = 2, ParentId = 1},
+                new FolderItem{Id=4, VirtualPath = "Graphic Products", Order = 2, ParentId = 1},
+                new FolderItem{Id=5, VirtualPath = "Primary Resources", Order = 3, ParentId = 2},
+                new FolderItem{Id=5, VirtualPath = "Secondary Resources", Order = 3, ParentId = 2},
+                new FolderItem{Id=8, VirtualPath = "Process", Order = 3, ParentId = 4},
+                new FolderItem{Id=9, VirtualPath = "Final Poducts", Order = 3, ParentId = 4}
             };
 
             db.MenuItems.AddRange(menuItems);
