@@ -175,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FolderItemRoute.cs" />
-    <Compile Include="App_Start\UrlRouteHandler.cs" />
     <Compile Include="DataUtility\AppDbInitializer.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

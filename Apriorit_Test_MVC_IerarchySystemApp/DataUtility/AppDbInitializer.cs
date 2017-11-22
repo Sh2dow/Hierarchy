@@ -17,7 +17,8 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
                 new FolderItem{Id=5, VirtualPath = "Primary Resources", Order = 3, ParentId = 2},
                 new FolderItem{Id=5, VirtualPath = "Secondary Resources", Order = 3, ParentId = 2},
                 new FolderItem{Id=8, VirtualPath = "Process", Order = 3, ParentId = 4},
-                new FolderItem{Id=9, VirtualPath = "Final Poducts", Order = 3, ParentId = 4}
+                new FolderItem{Id=9, VirtualPath = "Final Poducts", Order = 3, ParentId = 4},
+                new FolderItem{Id=10, VirtualPath = "Graphic Products", Order = 4, ParentId = 9},
             };
 
             db.MenuItems.AddRange(menuItems);

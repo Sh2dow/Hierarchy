@@ -18,13 +18,13 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
         {
             RouteData result = null;
 
-            // Trim the leading slash
-            //var path = httpContext.Request.Path.Substring(1);
+            // Get params count to compare with order
+            var slashesCount = httpContext.Request.RawUrl.Count(c => c == '/');
             var path = httpContext.Request.Path.Split('/').Last();
 
             // Get the page that matches.
             var page = GetPageList(httpContext)
-                .Where(x => x.VirtualPath.Equals(path))
+                .Where(x => x.VirtualPath.Equals(path) && x.Order == slashesCount)
                 .FirstOrDefault();
 
             if (page != null)
