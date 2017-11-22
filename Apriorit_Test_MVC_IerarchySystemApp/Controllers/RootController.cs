@@ -8,35 +8,17 @@ using System.Web.Mvc;
 
 namespace Apriorit_Test_MVC_IerarchySystemApp.Controllers
 {
-    public class HomeController : Controller
+    public class RootController : Controller
     {
 
         ApplicationContext db = new ApplicationContext();
 
-        public ActionResult Menu()
+        public ActionResult Index()
         {
             List<MenuItem> menuItems = db.MenuItems.ToList();
 
             return PartialView(menuItems);
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

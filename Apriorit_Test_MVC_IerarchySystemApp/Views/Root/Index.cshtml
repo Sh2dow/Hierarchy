@@ -1,5 +1,6 @@
 ﻿@using Apriorit_Test_MVC_IerarchySystemApp.Models
 @model IEnumerable<MenuItem>
+
 <div class="jumbotron">
 
     @helper BuildMenu(IEnumerable<MenuItem> data, int? parentId = null)
@@ -11,7 +12,7 @@ if (items.Any())
             @foreach (var item in items)
             {
                 <li>
-                    <a href="@item.Url">@item.Header</a>
+                    <a href="@item.Header">@item.Header</a>
                     @BuildMenu(data, item.Id)
                 </li>
             }
