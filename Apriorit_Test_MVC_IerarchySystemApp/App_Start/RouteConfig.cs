@@ -9,6 +9,10 @@ namespace Apriorit_Test_MVC_IerarchySystemApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.Add(
+            name: "CustomPage",
+            item: new CustomPageRoute());
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
